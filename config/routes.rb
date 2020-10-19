@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     ["v1"].each do |version|
       namespace version do
         resources :users
+        resources :accounts
+        resources :vehicles
+        post "add_branch" => 'admin#add_branch'
+        get "branches" => 'admin#get_all_branches'
+
         get 'test/index'
       end
     end
