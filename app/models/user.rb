@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  has_secure_password
+  # profile details for an account
 end

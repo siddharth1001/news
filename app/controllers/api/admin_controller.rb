@@ -20,8 +20,7 @@ class Api::AdminController < ApplicationController
   private 
 
   def is_admin?
-    # current_account.is_admin
-    true
+    current_account.is_admin
   end
 
   def permitted_branch_params
