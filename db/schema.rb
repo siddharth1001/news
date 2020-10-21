@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_052448) do
+ActiveRecord::Schema.define(version: 2020_10_20_171205) do
 
-  create_table "accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.string "status"
     t.boolean "is_admin"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_052448) do
     t.text "auth_token"
   end
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string "city"
     t.integer "pin"
     t.string "state"
@@ -30,7 +30,13 @@ ActiveRecord::Schema.define(version: 2020_10_20_052448) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "branches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "bills", force: :cascade do |t|
+    t.integer "total_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "branches", force: :cascade do |t|
     t.string "name"
     t.string "status"
     t.integer "address_id"
@@ -40,7 +46,44 @@ ActiveRecord::Schema.define(version: 2020_10_20_052448) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "equipment", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.integer "price_per_hour"
+    t.string "company_name"
+    t.datetime "purchased_date"
+    t.integer "owner_account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rental_insurances", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.string "type"
+    t.string "base_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservation_addons", force: :cascade do |t|
+    t.integer "vehicle_reservation_id"
+    t.integer "flavour_id"
+    t.string "flavour_type"
+    t.integer "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "status"
+    t.integer "price_per_hour"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
     t.string "email"
@@ -53,7 +96,21 @@ ActiveRecord::Schema.define(version: 2020_10_20_052448) do
     t.datetime "driving_licence_expiry"
   end
 
-  create_table "vehicles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "vehicle_reservations", force: :cascade do |t|
+    t.integer "vehicle_id"
+    t.integer "account_id"
+    t.datetime "start_date"
+    t.datetime "return_date"
+    t.datetime "due_date"
+    t.integer "bill_id"
+    t.integer "quoted_price"
+    t.integer "pickup_address_id"
+    t.integer "return_address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
     t.string "owner_account_id"
     t.string "branch_id"
     t.string "type"

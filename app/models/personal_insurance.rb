@@ -1,0 +1,2 @@
+class PersonalInsurance < RentalInsurance
+end

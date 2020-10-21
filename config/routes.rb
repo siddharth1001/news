@@ -11,13 +11,15 @@ Rails.application.routes.draw do
         post "add_branch" => 'admin#add_branch'
         get "branches" => 'admin#get_all_branches'
 
-        get 'test/index'
+        post "reserve/:id" => 'vehicles#reserve'
+        post "show/:id" => 'vehicles#show'
+
       end
     end
 
     ["v2"].each do |version|
       namespace version do
-        get 'test/index'
+      #  add version v2 apis here
       end
     end
 

@@ -1,0 +1,2 @@
+class BelongingInsurance < RentalInsurance
+end

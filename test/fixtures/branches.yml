@@ -4,8 +4,9 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+branch1:
+  name: "BranchName"
+  status: "Open"
+  address_id: 1
+  manager_account_id: 1
+  started_at: DateTime.now()

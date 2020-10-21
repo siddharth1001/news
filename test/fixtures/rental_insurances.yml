@@ -4,8 +4,20 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
+
+# Usage: rails db:fixtures:load RAILS_ENV=test
+
+personal_insurance:
+  id: 1
+  name: "Personal Insurance 1"
+  status: "Available"
+  type: "PersonalInsurance"
+  base_price: 10
+
 #
-two: {}
-# column: value
+belonging_insurance:
+  id: 2
+  name: "Belonging Insurance 1"
+  status: "Available"
+  type: "BelongingInsurance"
+  base_price: 5
