@@ -9,8 +9,7 @@ class BookingService
     end
 
     @response = {
-      message: "Booking Failed",
-      vehicle_details: nil
+      message: "Booking Failed"
     }
   end
 
