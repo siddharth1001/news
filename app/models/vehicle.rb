@@ -12,7 +12,16 @@ class Vehicle < ApplicationRecord
     :scooty => "Scooty"
   }.with_indifferent_access.freeze
 
+
   def wheels
     4
+  end
+
+  def booking_attributes
+    self.attributes.slice(:id, :branch_id, :type, :license_number, :model, :barcode, :manufacturing_year, :company_name)
+  end
+
+  def is_available_for_booking?
+    self.is_available
   end
 end

@@ -1,4 +1,4 @@
 module RentalCarsExceptions
-  class AddressMissing < Exception; end
+  class MissingVehicle < Exception; end
 
 end
