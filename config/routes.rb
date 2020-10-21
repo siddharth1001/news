@@ -7,12 +7,17 @@ Rails.application.routes.draw do
       namespace version do
         resources :users
         resources :accounts
-        resources :vehicles
+        resources :vehicles, :only => [:create, :index, :show, :update, :delete] do
+          collection do
+            post 'search'
+          end
+        end
         post "add_branch" => 'admin#add_branch'
         get "branches" => 'admin#get_all_branches'
 
         post "reserve/:id" => 'vehicles_reservation#reserve'
         post "show/:id" => 'vehicles#show'
+
 
       end
     end
